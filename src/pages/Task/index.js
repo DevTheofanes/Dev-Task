@@ -13,7 +13,9 @@ import { MdAdd, MdClear, MdDone } from "react-icons/md";
 export default class Task extends Component {
   state = {
     newTask: "",
-    tasks: []
+    tasks: [],
+    img: "",
+    title: ""
   };
   async componentDidMount() {
     const { match } = this.props;
@@ -22,12 +24,29 @@ export default class Task extends Component {
 
     const response = await api.get(`/projets/${id}`);
     console.log(response.data.tasks);
-    this.setState({ tasks: response.data.tasks });
+    this.setState({
+      tasks: response.data.tasks,
+      img: response.data.img,
+      title: response.data.title
+    });
   }
   handleInputChange = e => {
     this.setState({ newTask: e.target.value });
   };
   handleSubmit = async e => {
+    // e.preventDefault();
+    // const { match } = this.props;
+    // const idTask = match.params.id;
+
+    // const { newTask, tasks } = this.state;
+    // const id = tasks.length;
+    // const newtask = { id: id + 1, task: newTask };
+    // this.setState({ tasks: [...tasks, newtask], newTask: "" });
+    // await api.put(`projects/${idTask}`, {
+    //   id:idTask ,
+    //   tasks: [...tasks, newtask]
+    // });
+
     const { match } = this.props;
     const idTask = match.params.id;
 
@@ -35,12 +54,17 @@ export default class Task extends Component {
 
     console.log(idTask);
 
-    const { newTask, tasks } = this.state;
+    const { newTask, tasks, img, title } = this.state;
     const id = tasks.length;
     const newtask = { id: id + 1, task: newTask };
 
     this.setState({ tasks: [...tasks, newtask], newTask: "" });
-    await api.post("projets/1", { newtask });
+    await api.put(`projets/${idTask}`, {
+      id: idTask,
+      title: title,
+      img: img,
+      tasks: [...tasks, newtask]
+    });
   };
   render() {
     const { newTask, tasks } = this.state;

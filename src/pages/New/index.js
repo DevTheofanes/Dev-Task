@@ -29,14 +29,22 @@ export default class New extends Component {
     this.setState({ newProject: e.target.value });
   };
   handleBtn = e => {
-    //ADICIONAR NOTIFICAÇÃO
-    // e.preventDefault();
+    const { newProject, image } = this.state;
+    if (!newProject) {
+      //alerta falta nome
+      console.log("alerta falta nome");
+    }
+    if (image === 0) {
+      //alerta falta image
+      console.log("alerta falta image");
+    }
+    e.preventDefault();
   };
   render() {
     const { images, newProject } = this.state;
     return (
       <>
-        <AddContainer onSubmit={this.handleAdd}>
+        <AddContainer onSubmit={this.handleSubmit}>
           <input
             type="text"
             placeholder="Type your new Project"
@@ -51,7 +59,10 @@ export default class New extends Component {
         </AddContainer>
         <Container>
           {images.map(image => (
-            <Box key={image.id}>
+            <Box
+              // style="background-image:url(images/html.jpg)"
+              key={image.id}
+            >
               <img src={image.url} alt={image.id} />
             </Box>
           ))}

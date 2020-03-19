@@ -1,14 +1,13 @@
 import styled from "styled-components";
 
-export const AddContainer = styled.form.attrs(props => ({
-  disabled: props.loading
-}))`
+export const AddContainer = styled.form`
   max-width: 800px;
   background-color: #fff;
   border-radius: 4px;
   padding: 30px;
   margin: 30px auto;
   display: flex;
+
   input {
     flex: 1;
     border: 1px solid #eee;

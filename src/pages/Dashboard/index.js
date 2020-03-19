@@ -9,26 +9,13 @@ import api from "../../services/api";
 
 export default class Dashboard extends Component {
   state = {
-    tasks: [],
-    newProject: "",
-    add: false,
-    images: []
+    tasks: []
   };
 
   async componentDidMount() {
     const response = await api.get("projets");
-    const images = await api.get("images");
-
-    this.setState({ tasks: response.data, images: images.data });
+    this.setState({ tasks: response.data });
   }
-  handleSubmit = e => {
-    e.preventDefault();
-    this.setState({ add: false, newProject: "" });
-  };
-  handleAdd = e => {
-    e.preventDefault();
-    this.setState({ add: true });
-  };
   render() {
     const { tasks } = this.state;
     return (

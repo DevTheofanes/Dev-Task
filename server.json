@@ -2,18 +2,32 @@
   "projets": [
     {
       "id": 1,
-      "title": "Game Yaa",
-      "tasks": [
-        { "id": 1, "task": "Estudar React" },
-        { "id": 2, "task": "Estudar Node" }
-      ],
-      "img": "https://images.unsplash.com/photo-1552994607-b4fb9b2280de?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      "title": "newApp",
+      "tasks": [],
+      "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
     },
     {
       "id": 2,
       "title": "Pss",
-      "tasks": [],
-      "img": "https://images.unsplash.com/photo-1573530256504-79487d8427fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      "img": "https://images.unsplash.com/photo-1573530256504-79487d8427fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
+      "tasks": [
+        {
+          "id": 1,
+          "task": "OFks"
+        },
+        {
+          "id": 2,
+          "task": "fsokfs"
+        },
+        {
+          "id": 3,
+          "task": "fsokfso"
+        },
+        {
+          "id": 4,
+          "task": "fsofsok"
+        }
+      ]
     },
     {
       "id": 3,
@@ -23,9 +37,22 @@
     },
     {
       "id": 4,
-      "title": "Photo",
-      "tasks": [],
-      "img": "https://images.unsplash.com/photo-1573530256504-79487d8427fc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+      "title": "newApp",
+      "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60",
+      "tasks": [
+        {
+          "id": 1,
+          "task": "Yaaa"
+        },
+        {
+          "id": 2,
+          "task": "oakdsodk"
+        },
+        {
+          "id": 3,
+          "task": "sdoksds"
+        }
+      ]
     }
   ],
   "images": [
