@@ -38,22 +38,17 @@ export default class New extends Component {
     if (image === 0) {
       e.preventDefault();
       toast.error("Choose an image for your project");
-      console.log("alerta falta image");
     }
-    const response = await api.get(`/`);
-    const { projets } = response.data;
-    // await api.put("/", {
-    //   projets: [
-    //     ...projets,
-    //     {
-    //       id: 15,
-    //       title: "Neeww",
-    //       tasks: [],
-    //       img:
-    //         "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
-    //     }
-    //   ]
-    // });
+    const url = await api.get(`images/${image}`);
+    const response = await api.get("projets");
+    const id = response.data.length;
+    console.log(id);
+    await api.post("/projets", {
+      id: id + 1,
+      title: newProject,
+      tasks: [],
+      img: url.data.url
+    });
   };
   handleSelect = id => {
     this.setState({ image: id });

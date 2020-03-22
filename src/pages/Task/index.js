@@ -53,6 +53,9 @@ export default class Task extends Component {
       tasks: [...tasks, newtask]
     });
   };
+  handleDelete = id => {
+    console.log(id);
+  };
   render() {
     const { newTask, tasks } = this.state;
     return (
@@ -76,7 +79,7 @@ export default class Task extends Component {
                 <SubmitButton>
                   <MdDone size={20} color="#fff" />
                 </SubmitButton>
-                <SubmitButtonClear>
+                <SubmitButtonClear onClick={() => this.handleDelete(task.id)}>
                   <MdClear size={20} color="#fff" />
                 </SubmitButtonClear>
               </div>
