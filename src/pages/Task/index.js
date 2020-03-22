@@ -34,19 +34,6 @@ export default class Task extends Component {
     this.setState({ newTask: e.target.value });
   };
   handleSubmit = async e => {
-    // e.preventDefault();
-    // const { match } = this.props;
-    // const idTask = match.params.id;
-
-    // const { newTask, tasks } = this.state;
-    // const id = tasks.length;
-    // const newtask = { id: id + 1, task: newTask };
-    // this.setState({ tasks: [...tasks, newtask], newTask: "" });
-    // await api.put(`projects/${idTask}`, {
-    //   id:idTask ,
-    //   tasks: [...tasks, newtask]
-    // });
-
     const { match } = this.props;
     const idTask = match.params.id;
 

@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import { MdAdd } from "react-icons/md";
+import { toast } from "react-toastify";
+
+import { MdAdd, MdDone } from "react-icons/md";
 
 import { Container, Box } from "../../components/container/styles";
 
-import { AddContainer } from "./styles";
+import { AddContainer, Button } from "./styles";
 
 import api from "../../services/api";
 
@@ -14,7 +16,8 @@ export default class New extends Component {
     newProject: "",
     image: 0,
     add: false,
-    images: []
+    images: [],
+    imageUrl: ""
   };
 
   async componentDidMount() {
@@ -22,29 +25,50 @@ export default class New extends Component {
 
     this.setState({ images: images.data });
   }
-  handleSubmit = e => {
-    e.preventDefault();
-  };
   handleInputChange = e => {
     this.setState({ newProject: e.target.value });
   };
-  handleBtn = e => {
+  handleBtn = async e => {
     const { newProject, image } = this.state;
     if (!newProject) {
-      //alerta falta nome
+      e.preventDefault();
+      toast.error("Enter a name for your Project");
       console.log("alerta falta nome");
     }
     if (image === 0) {
-      //alerta falta image
+      e.preventDefault();
+      toast.error("Choose an image for your project");
       console.log("alerta falta image");
     }
-    e.preventDefault();
+    const response = await api.get(`/`);
+    const { projets } = response.data;
+    // await api.put("/", {
+    //   projets: [
+    //     ...projets,
+    //     {
+    //       id: 15,
+    //       title: "Neeww",
+    //       tasks: [],
+    //       img:
+    //         "https://images.unsplash.com/photo-1542281286-9e0a16bb7366?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+    //     }
+    //   ]
+    // });
+  };
+  handleSelect = id => {
+    this.setState({ image: id });
+  };
+  henderSelect = id => {
+    const { image } = this.state;
+    if (image === id) {
+      return <MdDone size={50} color="#fff" />;
+    }
   };
   render() {
     const { images, newProject } = this.state;
     return (
       <>
-        <AddContainer onSubmit={this.handleSubmit}>
+        <AddContainer>
           <input
             type="text"
             placeholder="Type your new Project"
@@ -59,11 +83,11 @@ export default class New extends Component {
         </AddContainer>
         <Container>
           {images.map(image => (
-            <Box
-              // style="background-image:url(images/html.jpg)"
-              key={image.id}
-            >
-              <img src={image.url} alt={image.id} />
+            <Box key={image.id}>
+              <Button onClick={() => this.handleSelect(image.id)}>
+                <img src={image.url} alt={image.id} />
+                {this.henderSelect(image.id)}
+              </Button>
             </Box>
           ))}
         </Container>

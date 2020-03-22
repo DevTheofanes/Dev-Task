@@ -26,3 +26,14 @@ export const AddContainer = styled.form`
     margin-left: 15px;
   }
 `;
+
+export const Button = styled.button`
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  svg {
+    position: absolute;
+  }
+`;
